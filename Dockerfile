@@ -22,4 +22,4 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 #ENV KC_DB_PASSWORD=<DBPASSWORD>
 #ENV KC_HOSTNAME=localhost
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
-CMD ["start-dev"]
+CMD ["start"]
