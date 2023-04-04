@@ -1,4 +1,10 @@
+FROM eclipse-temurin:17-jdk-jammy as custom-builder
+COPY ./custom-providers /custom-providers
+WORKDIR /custom-providers
+RUN ./gradlew clean jar
+
 FROM quay.io/keycloak/keycloak:latest as builder
+COPY --from=custom-builder custom-providers/build/libs/custom-providers-1.0-SNAPSHOT.jar opt/keycloak/providers/custom-providers-1.0-SNAPSHOT.jar
 
 # Enable health and metrics support
 ENV KC_HEALTH_ENABLED=true

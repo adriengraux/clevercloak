@@ -1,0 +1,32 @@
+buildscript {
+    ext {
+        keycloackVersion = '21.0.2'
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'org.clevercloak'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.keycloak:keycloak-core:${keycloackVersion}"
+    implementation "org.keycloak:keycloak-server-spi:${keycloackVersion}"
+    implementation "org.keycloak:keycloak-server-spi-private:${keycloackVersion}"
+    implementation "org.keycloak:keycloak-services:${keycloackVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava {
+    sourceCompatibility = 17
+    targetCompatibility = 17
+}
